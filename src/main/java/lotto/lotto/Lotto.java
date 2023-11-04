@@ -24,6 +24,9 @@ public class Lotto {
         }
     }
 
+    /**
+     * 이러면 Lotto 객체가 LottoConfig에 대해 종속성을 갖게 되지 않나?
+     */
     private boolean isInRange(int number) {
         return lottoConfig.getLottoMinNumber() <= number && number <= lottoConfig.getLottoMaxNumber();
     }
