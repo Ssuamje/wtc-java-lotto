@@ -12,11 +12,13 @@ public class LottoConfig implements Validatable {
 	private final int lottoSize;
 	private final int lottoMinNumber;
 	private final int lottoMaxNumber;
+	private final int lottoPrice;
 
-	public LottoConfig(int lottoSize, int lottoMinNumber, int lottoMaxNumber) {
+	public LottoConfig(int lottoSize, int lottoMinNumber, int lottoMaxNumber, int lottoPrice) {
 		this.lottoSize = lottoSize;
 		this.lottoMinNumber = lottoMinNumber;
 		this.lottoMaxNumber = lottoMaxNumber;
+		this.lottoPrice = lottoPrice;
 		Validator.throwIfInvalidConstruction(this);
 	}
 
@@ -34,8 +36,8 @@ public class LottoConfig implements Validatable {
 
 	@Override
 	public List<ExceptionStatus> findExceptionStatuses() {
-		List <ExceptionStatus> exceptionStatuses = new ArrayList<>();
-		if  (lottoSize <= 0) {
+		List<ExceptionStatus> exceptionStatuses = new ArrayList<>();
+		if (lottoSize <= 0) {
 			exceptionStatuses.add(ExceptionStatus.INVALID_LOTTO_SIZE_RANGE);
 		}
 		if (lottoMinNumber <= 0 || lottoMaxNumber <= 0) {
@@ -43,6 +45,9 @@ public class LottoConfig implements Validatable {
 		}
 		if (lottoMinNumber > lottoMaxNumber) {
 			exceptionStatuses.add(ExceptionStatus.INVALID_LOTTO_MIN_MAX);
+		}
+		if (lottoPrice <= 0) {
+			exceptionStatuses.add(ExceptionStatus.INVALID_LOTTO_PRICE);
 		}
 		return Collections.unmodifiableList(exceptionStatuses);
 	}

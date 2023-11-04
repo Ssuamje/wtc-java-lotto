@@ -10,6 +10,8 @@ public enum ExceptionStatus {
 			"로또 번호의 최솟값은 최댓값보다 작아야 합니다."),
 	INVALID_LOTTO_SIZE_RANGE("로또 번호의 수가 유효하지 않습니다.",
 			"로또 번호의 수는 한 개 이상이어야 합니다."),
+	INVALID_LOTTO_PRICE("로또 가격이 유효하지 않습니다",
+			"로또 가격은 자연수여야 합니다."),
 
 	/*-------------------------------------Lotto-------------------------------------*/
 	INVALID_LOTTO_NUMBERS("로또 번호의 범위가 유효하지 않습니다.",
@@ -19,7 +21,6 @@ public enum ExceptionStatus {
 	DUPLICATE_LOTTO_NUMBERS("로또 번호가 중복되었습니다.",
 			"로또 번호는 중복되지 않아야 합니다."),
 	;
-
 	private final String message;
 	private final String usage;
 
