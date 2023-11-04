@@ -3,6 +3,11 @@ package lotto.lotto;
 import java.util.List;
 
 public class LottoPrinter {
+	private static final String ERROR_PREFIX = "[ERROR]";
+	
+	public static void printExceptionInformation(LottoExceptionStatus exceptionStatus) {
+		System.out.println(ERROR_PREFIX + " " + exceptionStatus.getMessage());
+	}
 
 	public void printLotto(Lotto lotto) {
 		String numbersAsString = createNumbersAsString(lotto.getNumbers());

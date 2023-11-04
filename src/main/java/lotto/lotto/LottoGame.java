@@ -19,7 +19,9 @@ public class LottoGame {
 
 	public void play() {
 		int purchaseAmount = lottoInputAdapter.parseInputAsPurchaseAmountTillValid();
-		List<Lotto> lottoList = createLottoListByAmount(purchaseAmount);
+		int lottoCount = purchaseAmount / Lotto.PRICE;
+		List<Lotto> lottoList = createLottoListByAmount(lottoCount);
+		lottoPrinter.printLottoCount(lottoCount);
 		lottoList.forEach(lottoPrinter::printLotto);
 
 		List<Integer> winningNumbers = lottoInputAdapter.parseInputAsWinningNumbersTillValid();
@@ -36,14 +38,12 @@ public class LottoGame {
 		lottoPrinter.printYield(lottoResultStatistics);
 	}
 
-	private List<Lotto> createLottoListByAmount(int purchaseAmount) {
-		int lottoCount = purchaseAmount / Lotto.PRICE;
+	private List<Lotto> createLottoListByAmount(int lottoCount) {
 		List<Lotto> result = new ArrayList<>();
 		for (int i = 0; i < lottoCount; i++) {
 			Lotto lotto = createLotto();
 			result.add(lotto);
 		}
-		lottoPrinter.printLottoCount(lottoCount);
 		return result;
 	}
 

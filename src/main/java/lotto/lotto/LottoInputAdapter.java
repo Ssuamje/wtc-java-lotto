@@ -14,8 +14,7 @@ public class LottoInputAdapter {
 			return Arrays.stream(numbersString.split(","))
 					.map(Integer::parseInt).toList();
 		} catch (NumberFormatException e) {
-			System.out.println(new LottoException(LottoExceptionStatus.INVALID_LOTTO_NUMBER_INPUT)
-					.createExceptionInformation());
+			LottoPrinter.printExceptionInformation(LottoExceptionStatus.INVALID_LOTTO_NUMBER_INPUT);
 			return parseInputAsIntegerListTillValid();
 		}
 	}
@@ -27,14 +26,12 @@ public class LottoInputAdapter {
 		try {
 			purchaseAmount = Integer.parseInt(purchaseAmountString);
 		} catch (NumberFormatException e) {
-			System.out.println(new LottoException(LottoExceptionStatus.INVALID_PURCHASE_AMOUNT_INPUT)
-					.createExceptionInformation());
+			LottoPrinter.printExceptionInformation(LottoExceptionStatus.INVALID_PURCHASE_AMOUNT_INPUT);
 			purchaseAmount = parseInputAsPurchaseAmountTillValid();
 		}
 
 		if (purchaseAmount < Lotto.PRICE || purchaseAmount % Lotto.PRICE != 0) {
-			System.out.println(new LottoException(LottoExceptionStatus.INVALID_LOTTO_PRICE)
-					.createExceptionInformation());
+			LottoPrinter.printExceptionInformation(LottoExceptionStatus.INVALID_LOTTO_PRICE);
 			purchaseAmount = parseInputAsPurchaseAmountTillValid();
 		}
 		return purchaseAmount;
@@ -44,8 +41,7 @@ public class LottoInputAdapter {
 		List<Integer> winningNumbers = parseInputAsIntegerListTillValid();
 
 		if (winningNumbers.size() != Lotto.SIZE) {
-			System.out.println(new LottoException(LottoExceptionStatus.INVALID_SIZE)
-					.createExceptionInformation());
+			LottoPrinter.printExceptionInformation(LottoExceptionStatus.INVALID_WINNING_NUMBERS_INPUT);
 			winningNumbers = parseInputAsWinningNumbersTillValid();
 		}
 		return winningNumbers;
@@ -58,14 +54,12 @@ public class LottoInputAdapter {
 		try {
 			bonusNumber = Integer.parseInt(bonusNumberString);
 		} catch (NumberFormatException e) {
-			System.out.println(new LottoException(LottoExceptionStatus.INVALID_LOTTO_NUMBER_INPUT)
-					.createExceptionInformation());
+			LottoPrinter.printExceptionInformation(LottoExceptionStatus.INVALID_LOTTO_NUMBER_INPUT);
 			bonusNumber = getInputBonusNumberTillValid();
 		}
 
 		if (bonusNumber < Lotto.MIN || bonusNumber > Lotto.MAX) {
-			System.out.println(new LottoException(LottoExceptionStatus.INVALID_RANGED_NUMBER)
-					.createExceptionInformation());
+			LottoPrinter.printExceptionInformation(LottoExceptionStatus.INVALID_RANGED_NUMBER);
 			bonusNumber = getInputBonusNumberTillValid();
 		}
 		return bonusNumber;
