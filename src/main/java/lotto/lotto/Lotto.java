@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
+	public static final int PRICE = 1000;
 	public static final int SIZE = 6;
 	public static final int MIN = 1;
 	public static final int MAX = 45;
@@ -32,6 +33,10 @@ public class Lotto {
 	private boolean isDuplicated(List<Integer> numbers, Integer number) {
 		int once = 1;
 		return Collections.frequency(numbers, number) > once;
+	}
+
+	public List<Integer> getNumbers() {
+		return numbers;
 	}
 
 	@Override

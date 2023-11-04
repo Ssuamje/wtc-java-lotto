@@ -13,14 +13,6 @@ import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
-	/**
-	 * 비즈니스로직이 테스트에서 드러나도 괜찮은가? -> 오히려 지향해야하는가?
-	 * 하지만 비즈니스 로직이 테스트에 드러난다는 것 자체가 테스트가 변화에 닫혀있다는 것 아닌가?
-	 * -> 라는 얘기는 결국 1 ~ 45의 범위를 정해놓는 것이 아닌 주입 받을 수 있도록 열어놓아야 하는게 아닐까?
-	 * <p>
-	 * 사실상 Lotto 객체는 이미 과제에서 주어질 때 부터 일급 컬렉션 객체로서의 역할을 암시하는 것 같다.
-	 * -> 그렇다면 굳이 LottoNums와 같은 별도의 객체를 만들고 래핑하기보다, Lotto 자체를 이용하는 편이 낫겠다.
-	 */
 	private List<Integer> createRandomNumbers(int min, int max, int size) {
 		return Randoms.pickUniqueNumbersInRange(min, max, size);
 	}
