@@ -4,9 +4,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
-	private static final int SIZE = 6;
-	private static final int MIN = 1;
-	private static final int MAX = 45;
+	public static final int SIZE = 6;
+	public static final int MIN = 1;
+	public static final int MAX = 45;
 	private final List<Integer> numbers;
 
 	public Lotto(List<Integer> numbers) {
