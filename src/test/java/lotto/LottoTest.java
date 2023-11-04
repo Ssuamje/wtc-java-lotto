@@ -25,10 +25,6 @@ class LottoTest {
 		return Randoms.pickUniqueNumbersInRange(min, max, size);
 	}
 
-	private Integer createLottoNumberByRange(int min, int max) {
-		return Randoms.pickNumberInRange(min, max);
-	}
-
 	@Nested
 	@DisplayName("로또를 생성할 때,")
 	class Constructor {
