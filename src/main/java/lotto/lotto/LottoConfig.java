@@ -1,6 +1,14 @@
 package lotto.lotto;
 
-public class LottoConfig {
+import lotto.ExceptionStatus;
+import lotto.Validatable;
+import lotto.Validator;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class LottoConfig implements Validatable {
 	private final int lottoSize;
 	private final int lottoMinNumber;
 	private final int lottoMaxNumber;
@@ -9,6 +17,7 @@ public class LottoConfig {
 		this.lottoSize = lottoSize;
 		this.lottoMinNumber = lottoMinNumber;
 		this.lottoMaxNumber = lottoMaxNumber;
+		Validator.throwIfInvalidConstruction(this);
 	}
 
 	public int getLottoSize() {
@@ -23,9 +32,27 @@ public class LottoConfig {
 		return lottoMaxNumber;
 	}
 
-	public boolean isValid() {
-		return lottoSize > 0
-				&& lottoMinNumber > 0
-				&& lottoMaxNumber > 0;
+	@Override
+	public List<ExceptionStatus> findExceptionStatuses() {
+		List <ExceptionStatus> exceptionStatuses = new ArrayList<>();
+		if  (lottoSize <= 0) {
+			exceptionStatuses.add(ExceptionStatus.INVALID_LOTTO_SIZE_RANGE);
+		}
+		if (lottoMinNumber <= 0 || lottoMaxNumber <= 0) {
+			exceptionStatuses.add(ExceptionStatus.INVALID_LOTTO_NUMBER_RANGE);
+		}
+		if (lottoMinNumber > lottoMaxNumber) {
+			exceptionStatuses.add(ExceptionStatus.INVALID_LOTTO_MIN_MAX);
+		}
+		return Collections.unmodifiableList(exceptionStatuses);
+	}
+
+	@Override
+	public String toString() {
+		return "LottoConfig{" +
+				"lottoSize=" + lottoSize +
+				", lottoMinNumber=" + lottoMinNumber +
+				", lottoMaxNumber=" + lottoMaxNumber +
+				'}';
 	}
 }

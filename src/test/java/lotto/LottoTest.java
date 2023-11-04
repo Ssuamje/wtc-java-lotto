@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static lotto.ExceptionStatus.INVALID_LOTTO_SIZE;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -19,7 +20,7 @@ class LottoTest {
         private static final int MIN = 1;
         private static final int MAX = 45;
 
-        @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
+        @DisplayName("로또 번호의 개수가 " + SIZE +"개가 넘어가면 예외가 발생한다.")
         @Test
         void createLottoByOverSize() {
             LottoConfig lottoConfig = new LottoConfig(SIZE, MIN, MAX);
