@@ -16,13 +16,16 @@ public class Lotto {
 
 	private void validate(List<Integer> numbers) {
 		if (numbers.size() != LOTTO_SIZE) {
-			throw new IllegalArgumentException("로또 번호의 개수는 6개 이어야 합니다.");
+			throw new LottoException(LottoExceptionStatus.INVALID_SIZE)
+					.asIlleagalArgumentException();
 		}
 		if (numbers.stream().anyMatch(number -> number < LOTTO_MIN_NUM || number > LOTTO_MAX_NUM)) {
-			throw new IllegalArgumentException("로또 번호는 1 ~ 45 사이의 숫자여야 합니다.");
+			throw new LottoException(LottoExceptionStatus.INVALID_RANGED_NUMBER)
+					.asIlleagalArgumentException();
 		}
 		if (numbers.stream().anyMatch(number -> Collections.frequency(numbers, number) > 1)) {
-			throw new IllegalArgumentException("로또 번호에 중복된 숫자가 있습니다.");
+			throw new LottoException(LottoExceptionStatus.DUPLICATE_NUMBERS)
+					.asIlleagalArgumentException();
 		}
 	}
 
