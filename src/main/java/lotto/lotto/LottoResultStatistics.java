@@ -17,10 +17,10 @@ public class LottoResultStatistics {
 				.count();
 	}
 
-	public long countByMatchCountAndHasBonusNumber(int matchCount, boolean hasBonusNumber) {
+	public long countByMatchCountAndHasBonusNumber(int matchCount) {
 		return results.stream()
 				.filter(result -> result.getMatchCount() == matchCount)
-				.filter(result -> result.hasBonusNumber() == hasBonusNumber)
+				.filter(LottoResult::hasBonusNumber)
 				.count();
 	}
 

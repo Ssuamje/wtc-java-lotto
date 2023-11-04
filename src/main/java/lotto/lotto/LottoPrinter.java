@@ -19,7 +19,7 @@ public class LottoPrinter {
 		System.out.println("5개 일치 (" + LottoPrize.THIRD.asWon() + ") - "
 				+ lottoResultStatistics.countByMatchCount(5) + "개");
 		System.out.println("5개 일치, 보너스 볼 일치 (" + LottoPrize.SECOND.asWon() + ") - "
-				+ lottoResultStatistics.countByMatchCountAndHasBonusNumber(5, true) + "개");
+				+ lottoResultStatistics.countByMatchCountAndHasBonusNumber(5) + "개");
 		System.out.println("6개 일치 (" + LottoPrize.FIRST.asWon() + ") - "
 				+ lottoResultStatistics.countByMatchCount(6) + "개");
 	}
