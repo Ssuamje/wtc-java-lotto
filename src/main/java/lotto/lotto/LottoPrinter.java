@@ -12,16 +12,11 @@ public class LottoPrinter {
 	public void printLottoResultStatistics(LottoResultStatistics lottoResultStatistics) {
 		System.out.println("당첨 통계");
 		System.out.println("---------");
-		System.out.println("3개 일치 (" + LottoPrize.FIFTH.asWon() + ") - "
-				+ lottoResultStatistics.countByMatchCount(3) + "개");
-		System.out.println("4개 일치 (" + LottoPrize.FOURTH.asWon() + ") - "
-				+ lottoResultStatistics.countByMatchCount(4) + "개");
-		System.out.println("5개 일치 (" + LottoPrize.THIRD.asWon() + ") - "
-				+ lottoResultStatistics.countByMatchCount(5) + "개");
-		System.out.println("5개 일치, 보너스 볼 일치 (" + LottoPrize.SECOND.asWon() + ") - "
-				+ lottoResultStatistics.countByMatchCountAndHasBonusNumber(5) + "개");
-		System.out.println("6개 일치 (" + LottoPrize.FIRST.asWon() + ") - "
-				+ lottoResultStatistics.countByMatchCount(6) + "개");
+		System.out.println("3개 일치 (" + LottoPrize.FIFTH.asWon() + ") - " + lottoResultStatistics.countByMatchCount(3) + "개");
+		System.out.println("4개 일치 (" + LottoPrize.FOURTH.asWon() + ") - " + lottoResultStatistics.countByMatchCount(4) + "개");
+		System.out.println("5개 일치 (" + LottoPrize.THIRD.asWon() + ") - " + lottoResultStatistics.countByMatchCount(5) + "개");
+		System.out.println("5개 일치, 보너스 볼 일치 (" + LottoPrize.SECOND.asWon() + ") - " + lottoResultStatistics.countByMatchCountAndHasBonusNumber(5) + "개");
+		System.out.println("6개 일치 (" + LottoPrize.FIRST.asWon() + ") - " + lottoResultStatistics.countByMatchCount(6) + "개");
 	}
 
 	public void printYield(LottoResultStatistics lottoResultStatistics) {
