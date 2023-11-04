@@ -23,10 +23,15 @@ public class Lotto {
 			throw new LottoException(LottoExceptionStatus.INVALID_RANGED_NUMBER)
 					.asIlleagalArgumentException();
 		}
-		if (numbers.stream().anyMatch(number -> Collections.frequency(numbers, number) > 1)) {
+		if (numbers.stream().anyMatch(number -> isDuplicated(numbers, number))) {
 			throw new LottoException(LottoExceptionStatus.DUPLICATE_NUMBERS)
 					.asIlleagalArgumentException();
 		}
+	}
+
+	private boolean isDuplicated(List<Integer> numbers, Integer number) {
+		int once = 1;
+		return Collections.frequency(numbers, number) > once;
 	}
 
 	@Override
