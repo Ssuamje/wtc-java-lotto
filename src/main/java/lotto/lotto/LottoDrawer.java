@@ -4,16 +4,16 @@ public class LottoDrawer {
 
 	public LottoResult draw(Lotto winningLotto, Lotto lotto, int bonusNumber) {
 		return new LottoResult(
-				countMatchWithWinningLotto(winningLotto, lotto), hasBonusNumber(winningLotto, bonusNumber));
+				countMatch(winningLotto, lotto), isLottoHasBonusNumber(lotto, bonusNumber));
 	}
 
-	private long countMatchWithWinningLotto(Lotto winningLotto, Lotto lotto) {
-		return lotto.getNumbers().stream()
-				.filter(winningLotto.getNumbers()::contains)
+	private long countMatch(Lotto src, Lotto cmp) {
+		return src.getNumbers().stream()
+				.filter(cmp.getNumbers()::contains)
 				.count();
 	}
 
-	private boolean hasBonusNumber(Lotto winningLotto, int bonusNumber) {
-		return winningLotto.getNumbers().contains(bonusNumber);
+	private boolean isLottoHasBonusNumber(Lotto lotto, int bonusNumber) {
+		return lotto.getNumbers().contains(bonusNumber);
 	}
 }

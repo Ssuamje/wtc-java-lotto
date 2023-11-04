@@ -14,6 +14,7 @@ public class LottoResultStatistics {
 	public long countByMatchCount(int matchCount) {
 		return results.stream()
 				.filter(result -> result.getMatchCount() == matchCount)
+				.filter(result -> !result.hasBonusNumber())
 				.count();
 	}
 
@@ -28,7 +29,7 @@ public class LottoResultStatistics {
 		return ((double) calculateProfit() / purchaseAmount) * 100;
 	}
 
-	public long calculateProfit() {
+	private long calculateProfit() {
 		return results.stream()
 				.mapToLong(this::calculatePrize)
 				.sum();

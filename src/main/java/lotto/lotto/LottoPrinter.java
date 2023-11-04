@@ -20,7 +20,7 @@ public class LottoPrinter {
 	}
 
 	public void printYield(LottoResultStatistics lottoResultStatistics) {
-		System.out.println("총 수익률은 " + lottoResultStatistics.calculateYieldAsPercentage() + "%입니다.");
+		System.out.println("총 수익률은 " + String.format("%.1f", lottoResultStatistics.calculateYieldAsPercentage()) + "%입니다.");
 	}
 
 	public void printLottoCount(int lottoCount) {
