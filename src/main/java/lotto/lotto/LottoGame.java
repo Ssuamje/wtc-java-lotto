@@ -7,11 +7,6 @@ import java.util.List;
 
 public class LottoGame {
 
-	public static final double FIRST_PRIZE = 2000000000;
-	public static final double SECOND_PRIZE = 30000000;
-	public static final double THIRD_PRIZE = 1500000;
-	public static final double FOURTH_PRIZE = 50000;
-	public static final double FIFTH_PRIZE = 5000;
 	private final LottoInputAdapter lottoInputAdapter;
 	private final LottoPrinter lottoPrinter;
 	private final LottoDrawer lottoDrawer;

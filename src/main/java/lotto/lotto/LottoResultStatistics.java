@@ -25,30 +25,30 @@ public class LottoResultStatistics {
 	}
 
 	public double calculateYieldAsPercentage() {
-		return (calculateProfit() / purchaseAmount) * 100;
+		return ((double) calculateProfit() / purchaseAmount) * 100;
 	}
 
-	public double calculateProfit() {
+	public long calculateProfit() {
 		return results.stream()
-				.mapToDouble(this::calculatePrize)
+				.mapToLong(this::calculatePrize)
 				.sum();
 	}
 
-	private double calculatePrize(LottoResult lottoResult) {
+	private long calculatePrize(LottoResult lottoResult) {
 		if (lottoResult.getMatchCount() == 3) {
-			return LottoGame.FIFTH_PRIZE;
+			return LottoPrize.FIFTH.getPrize();
 		}
 		if (lottoResult.getMatchCount() == 4) {
-			return LottoGame.FOURTH_PRIZE;
+			return LottoPrize.FOURTH.getPrize();
 		}
 		if (lottoResult.getMatchCount() == 5) {
 			if (lottoResult.hasBonusNumber()) {
-				return LottoGame.SECOND_PRIZE;
+				return LottoPrize.SECOND.getPrize();
 			}
-			return LottoGame.THIRD_PRIZE;
+			return LottoPrize.THIRD.getPrize();
 		}
 		if (lottoResult.getMatchCount() == 6) {
-			return LottoGame.FIRST_PRIZE;
+			return LottoPrize.FIRST.getPrize();
 		}
 		return 0;
 	}
