@@ -4,13 +4,14 @@ import java.util.List;
 
 public class Validator {
 
+	private static final String ERROR_PREFIX = "[ERROR]";
+
 	public static void throwIfInvalidConstruction(Validatable validatable) {
 		List<ExceptionStatus> exceptionStatuses = validatable.findExceptionStatuses();
 		if (!exceptionStatuses.isEmpty())
 			throw new IllegalArgumentException(
-					"\n"
-					+ validatable.toString()
-					+ "\n"
+					ERROR_PREFIX + "\n"
+					+ validatable.toString() + "\n"
 					+ concatExceptionStatuses(exceptionStatuses)
 			);
 	}
