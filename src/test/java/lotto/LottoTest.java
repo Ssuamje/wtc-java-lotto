@@ -45,9 +45,12 @@ class LottoTest {
 		@DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
 		@Test
 		void createLottoByDuplicatedNumber() {
-			List<Integer> duplicatedNumbers = List.of(1, 2, 3, 4, 5, 5);
+			List<Integer> numbers = createRandomNumbers(MIN, MAX, 4);
+			Integer duplicated = 5;
+			numbers.add(duplicated);
+			numbers.add(duplicated);
 
-			assertThatThrownBy(() -> new Lotto(duplicatedNumbers))
+			assertThatThrownBy(() -> new Lotto(numbers))
 					.isInstanceOf(IllegalArgumentException.class);
 		}
 	}
