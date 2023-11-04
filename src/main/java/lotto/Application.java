@@ -1,15 +1,17 @@
 package lotto;
 
+import lotto.lotto.LottoDrawer;
 import lotto.lotto.LottoGame;
-import lotto.lotto.LottoParser;
+import lotto.lotto.LottoInputAdapter;
 import lotto.lotto.LottoPrinter;
 
 public class Application {
 
 	public static void main(String[] args) {
-		LottoParser lottoParser = new LottoParser();
+		LottoInputAdapter lottoInputAdapter = new LottoInputAdapter();
 		LottoPrinter lottoPrinter = new LottoPrinter();
-		LottoGame lottoGame = new LottoGame(lottoParser, lottoPrinter);
+		LottoDrawer lottoDrawer = new LottoDrawer();
+		LottoGame lottoGame = new LottoGame(lottoInputAdapter, lottoPrinter, lottoDrawer);
 
 		lottoGame.play();
 	}

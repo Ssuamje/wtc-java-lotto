@@ -10,7 +10,7 @@ public class LottoException {
 		this.status = status;
 	}
 
-	public IllegalArgumentException asIlleagalArgumentException() {
+	public IllegalArgumentException asIllegalArgumentException() {
 		return new IllegalArgumentException(createExceptionInformation());
 	}
 
@@ -18,7 +18,7 @@ public class LottoException {
 		return new IllegalStateException(createExceptionInformation());
 	}
 
-	private String createExceptionInformation() {
+	public String createExceptionInformation() {
 		return ERROR_PREFIX + "\n"
 				+ status.getMessage() + "\n"
 				+ status.getUsage();

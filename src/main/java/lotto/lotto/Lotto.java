@@ -18,15 +18,15 @@ public class Lotto {
 	private void validate(List<Integer> numbers) {
 		if (numbers.size() != SIZE) {
 			throw new LottoException(LottoExceptionStatus.INVALID_SIZE)
-					.asIlleagalArgumentException();
+					.asIllegalArgumentException();
 		}
 		if (numbers.stream().anyMatch(number -> number < MIN || number > MAX)) {
 			throw new LottoException(LottoExceptionStatus.INVALID_RANGED_NUMBER)
-					.asIlleagalArgumentException();
+					.asIllegalArgumentException();
 		}
 		if (numbers.stream().anyMatch(number -> isDuplicated(numbers, number))) {
 			throw new LottoException(LottoExceptionStatus.DUPLICATED_NUMBER)
-					.asIlleagalArgumentException();
+					.asIllegalArgumentException();
 		}
 	}
 
