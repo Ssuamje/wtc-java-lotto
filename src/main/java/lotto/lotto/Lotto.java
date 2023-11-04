@@ -2,7 +2,7 @@ package lotto.lotto;
 
 import java.util.List;
 
-public class Lotto s{
+public class Lotto {
     private final LottoConfig lottoConfig;
     private final List<Integer> numbers;
 
