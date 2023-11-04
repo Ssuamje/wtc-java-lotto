@@ -51,7 +51,7 @@ class LottoTest {
 
 			assertThatThrownBy(() -> new Lotto(numbers))
 					.isInstanceOf(IllegalArgumentException.class)
-					.hasMessageContaining(LottoExceptionStatus.DUPLICATE_NUMBERS.getMessage());
+					.hasMessageContaining(LottoExceptionStatus.DUPLICATED_NUMBER.getMessage());
 		}
 
 		@DisplayName("로또 번호가 1 ~ 45의 범위를 벗어나면 예외가 발생한다.")
