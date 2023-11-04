@@ -2,12 +2,14 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.lotto.Lotto;
+import lotto.lotto.LottoExceptionStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -39,7 +41,8 @@ class LottoTest {
 		void createLottoByOverSize() {
 			List<Integer> lottoNumbers = createRandomNumbers(MIN, MAX, SIZE + 1);
 			assertThatThrownBy(() -> new Lotto(lottoNumbers))
-					.isInstanceOf(IllegalArgumentException.class);
+					.isInstanceOf(IllegalArgumentException.class)
+					.hasMessageContaining(LottoExceptionStatus.INVALID_SIZE.getMessage());
 		}
 
 		@DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
@@ -51,7 +54,33 @@ class LottoTest {
 			numbers.add(duplicated);
 
 			assertThatThrownBy(() -> new Lotto(numbers))
-					.isInstanceOf(IllegalArgumentException.class);
+					.isInstanceOf(IllegalArgumentException.class)
+					.hasMessageContaining(LottoExceptionStatus.DUPLICATE_NUMBERS.getMessage());
+		}
+
+		@DisplayName("로또 번호가 1 ~ 45의 범위를 벗어나면 예외가 발생한다.")
+		@Test
+		void createInvalidRangedNumbers() {
+			List<Integer> numbersContainsZero = createRandomNumbers(MIN, MAX, SIZE - 1);
+			numbersContainsZero.add(0);
+			List<Integer> numbersContainsFortySix = createRandomNumbers(MIN, MAX, SIZE - 1);
+			numbersContainsFortySix.add(46);
+
+			assertThatThrownBy(() -> new Lotto(numbersContainsZero))
+					.isInstanceOf(IllegalArgumentException.class)
+					.hasMessageContaining(LottoExceptionStatus.INVALID_RANGED_NUMBER.getMessage());
+			assertThatThrownBy(() -> new Lotto(numbersContainsFortySix))
+					.isInstanceOf(IllegalArgumentException.class)
+					.hasMessageContaining(LottoExceptionStatus.INVALID_RANGED_NUMBER.getMessage());
+		}
+
+		@DisplayName("불변식을 만족해야 한다.")
+		@Test
+		void createProperly() {
+			List<Integer> numbers = createRandomNumbers(MIN, MAX, SIZE);
+
+			assertThatNoException()
+					.isThrownBy(() -> new Lotto(numbers));
 		}
 	}
 }
